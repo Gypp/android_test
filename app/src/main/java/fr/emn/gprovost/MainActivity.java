@@ -1,5 +1,6 @@
 package fr.emn.gprovost;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.GridLayoutManager;
@@ -33,8 +34,11 @@ public class MainActivity extends AppCompatActivity implements BookList.OnBookLi
 
     @Override
     public void onClickItemList(Book book) {
-        Bundle args = new Bundle();
-        args.putParcelable("book", book);
+        Timber.i("ClickOnItem");
+        BookDetail bookDetail = new BookDetail();
+        Bundle bundle = new Bundle();
+        bundle.putParcelable("BOOK", book);
+        bookDetail.setArguments(bundle);
         getSupportFragmentManager().beginTransaction()
                 .replace(R.id.list_view_fragment, new BookDetail(), BookDetail.class.getSimpleName())
                 .addToBackStack(BookList.class.getSimpleName())

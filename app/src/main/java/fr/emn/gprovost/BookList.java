@@ -32,6 +32,7 @@ public class BookList extends Fragment {
 
     private OnBookList listener;
     private RecyclerView recyclerView;
+    private RecyclerView.Adapter adapter;
 
     @Override
     public void onAttach(Context context) {
@@ -58,6 +59,7 @@ public class BookList extends Fragment {
                 for (Book book : response.body()) {
                     Timber.i(book.getTitle());
                     books.add(book);
+                    adapter.notifyDataSetChanged();
                 }
             }
 
@@ -68,7 +70,8 @@ public class BookList extends Fragment {
         });
         recyclerView = (RecyclerView) view.findViewById(R.id.recyclerView);
         recyclerView.setLayoutManager(new LinearLayoutManager(this.getContext(), LinearLayoutManager.VERTICAL, false));
-        recyclerView.setAdapter(new BookAdapter(this.getContext(), books));
+        adapter = new BookAdapter(this.getContext(), books);
+        recyclerView.setAdapter(adapter);
         recyclerView.addOnItemTouchListener(new RecyclerView.OnItemTouchListener() {
             @Override
             public boolean onInterceptTouchEvent(RecyclerView rv, MotionEvent e) {

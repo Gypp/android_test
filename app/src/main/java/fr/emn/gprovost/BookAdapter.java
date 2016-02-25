@@ -46,6 +46,7 @@ public class BookAdapter extends RecyclerView.Adapter<BookAdapter.ViewHolder> {
         holder.nameTextView.setText(book.getTitle());
         Picasso.with(holder.coverImageView.getContext())
                 .load(book.getCover())
+                .fit()
                 .centerCrop()
                 .into(holder.coverImageView);
     }

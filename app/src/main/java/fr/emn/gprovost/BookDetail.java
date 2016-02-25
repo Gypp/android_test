@@ -1,6 +1,7 @@
 package fr.emn.gprovost;
 
 import android.content.Context;
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -34,13 +35,13 @@ public class BookDetail extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.book_detail_view, container, false);
-        Book book = getArguments().getParcelable("book");
+        Book book = getArguments().getParcelable("BOOK");
         titleDetail = (TextView) view.findViewById(R.id.titleDetail);
         titleDetail.setText(book.getTitle());
         coverDetail = (ImageView) view.findViewById(R.id.coverDetail);
         Picasso.with(this.getContext())
                 .load(book.getCover())
-                .resize(100,100)
+                .fit()
                 .centerCrop()
                 .into(coverDetail);
         priceDetail = (TextView) view.findViewById((R.id.priceDetail));
