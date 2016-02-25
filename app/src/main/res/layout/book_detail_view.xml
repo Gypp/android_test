@@ -5,8 +5,8 @@
     android:layout_height="match_parent">
 
     <ImageView android:id="@+id/coverDetail"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+        android:layout_width="300px"
+        android:layout_height="300px"/>
     <TextView android:id="@+id/titleDetail"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"/>

@@ -40,7 +40,7 @@ public class MainActivity extends AppCompatActivity implements BookList.OnBookLi
         bundle.putParcelable("BOOK", book);
         bookDetail.setArguments(bundle);
         getSupportFragmentManager().beginTransaction()
-                .replace(R.id.list_view_fragment, new BookDetail(), BookDetail.class.getSimpleName())
+                .replace(R.id.list_view_fragment, bookDetail, BookDetail.class.getSimpleName())
                 .addToBackStack(BookList.class.getSimpleName())
                 .commit();
     }
